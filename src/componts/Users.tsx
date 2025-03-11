@@ -17,8 +17,10 @@ const Users: React.FC = () => {
   useEffect(() => {
     // Fetch users when component mounts
     axios
-      .get("http://localhost:5000/api/users")
+      .get("http://localhost:3000/api/user")
+      
       .then((response) => {
+        console.log(response.data)
         setUsers(response.data.sort((a: User, b: User) => a.id - b.id));
       })
       .catch((error) => console.error("Error fetching users:", error));
@@ -32,7 +34,7 @@ const Users: React.FC = () => {
   const confirmDelete = () => {
     if (userIdToDelete !== null) {
       axios
-        .delete(`http://localhost:5000/api/users/${userIdToDelete}`)
+        .delete(`http://localhost:3000/api/get/${userIdToDelete}`)
         .then(() => {
           setUsers((prevUsers) => prevUsers.filter(user => user.id !== userIdToDelete));
           setShowModal(false);

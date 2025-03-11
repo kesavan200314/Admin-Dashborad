@@ -1,74 +1,103 @@
+:root {
+  --sidebar-bg:black;
+  --sidebar-text: #e2e8f0;
+  --sidebar-active: #38bdf8;
+  --hover-bg: #1e293b;
+  --button-primary: #22c55e;
+  --button-primary-hover: #16a34a;
+  --button-danger: #ef4444;
+  --button-danger-hover: #dc2626;
+  --modal-bg: #1e293b;
+  --overlay-bg: rgba(0, 0, 0, 0.8);
+  --content-bg: #0f172a;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--content-bg);
+}
+
 .sidebar {
-  width: 250px;
-  height: 100vh; 
-  background-color:black; 
-  color: white;
-  padding: 20px;
-  position: fixed; 
+  width: 260px;
+  height: 100vh;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 24px;
+  position: fixed;
   left: 0;
   top: 0;
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 .logo {
-  font-size: 20px; 
+  font-size: 22px;
   font-weight: bold;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 nav ul {
-  list-style: none; 
-  padding: 0; 
+  list-style: none;
+  padding: 0;
 }
 
 nav ul li {
-  padding: 15px; 
-  font-size: 16px; 
-  transition: background 0.3s; 
+  padding: 15px;
+  font-size: 16px;
+  transition: background var(--transition-speed);
+  border-radius: var(--border-radius);
 }
 
 nav ul li.active {
-  background-color: #25ada7; 
-  border-radius: 5px; 
+  background: var(--sidebar-active);
 }
 
-/* nav ul li:hover {
-  background-color: #374151; 
-} */
+nav ul li:hover {
+  background: var(--hover-bg);
+}
 
 nav ul li a {
-  text-decoration: none; 
-  color: white; 
-  display: block; 
+  text-decoration: none;
+  color: white;
+  display: block;
 }
 
 .sign-out-button {
-  background-color: #26b309;
+  background: var(--button-primary);
   border: none;
-  cursor: pointer; 
+  cursor: pointer;
   padding: 12px;
-  border-radius: 5px;
-  transition: background-color 0.3s; 
+  border-radius: var(--border-radius);
+  transition: background var(--transition-speed);
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  margin-top: auto;
 }
 
 .sign-out-button:hover {
-  background-color: #2b3ac0; 
+  background: var(--button-primary-hover);
 }
 
-
-/* next  */
+/* Content */
 .content {
-  margin-left: 270px; 
-  padding: 20px;
-  background: #f3f4f6;
+  margin-left: 280px;
+  padding: 24px;
+  background: var(--content-bg);
   min-height: 100vh;
 }
 
 .events-table {
   background: white;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -87,16 +116,17 @@ th, td {
 }
 
 th {
-  background: #e5e7eb;
+  background: #e2e8f0;
 }
 
 tbody tr:nth-child(even) {
-  background: #f9fafb;
+  background: #f8fafc;
 }
 
+/* Status Badges */
 .status {
-  padding: 5px 10px;
-  border-radius: 10px;
+  padding: 6px 12px;
+  border-radius: 12px;
   font-weight: bold;
 }
 
@@ -110,66 +140,76 @@ tbody tr:nth-child(even) {
   color: #b45309;
 }
 
-
-
-
+/* Modal */
 .modal-overlay {
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: rgba(0, 0, 0, 0.5);
-display: flex;
-justify-content: center;
-align-items: center;
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .modal {
-background: white;
-padding: 20px;
-border-radius: 8px;
-max-width: 400px;
-text-align: center;
+  background: var(--modal-bg);
+  padding: 24px;
+  border-radius: var(--border-radius);
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
 .modal-actions {
-display: flex;
-justify-content: space-around;
-margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
 }
 
 .modal-button {
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  transition: background var(--transition-speed);
 }
 
-.cancel {
-background-color: #f44336;
-color: white;
+.modal-button.cancel {
+  background: var(--button-danger);
+  color: white;
 }
 
-.confirm {
-background-color: #4caf50;
-color: white;
+.modal-button.cancel:hover {
+  background: var(--button-danger-hover);
 }
 
+.modal-button.confirm {
+  background: var(--button-primary);
+  color: white;
+}
+
+.modal-button.confirm:hover {
+  background: var(--button-primary-hover);
+}
+
+/* Delete Button */
 .delete-button {
-background-color: #f44336; 
-color: white; 
-padding: 8px 16px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
+  background: var(--button-danger);
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 14px;
+  transition: background var(--transition-speed);
 }
 
 .delete-button:hover {
-background-color: #d32f2f; 
+  background: var(--button-danger-hover);
 }
 
 .delete-button:focus {
-outline: none;
+  outline: none;
 }
-
