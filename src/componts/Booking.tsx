@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/Event.css";  
+import { BE_URL } from "../utils/Constant";
 
 interface Booking {
   id: number;
@@ -19,7 +20,7 @@ const Book: React.FC = () => {
   const getBookings = async () => {
     setLoading(true); // Set loading to true before API call
     try {
-      const response = await axios.get("http://localhost:3000/api/booking");
+      const response = await axios.get(`${BE_URL}/booking`);
       console.log(response.data)
       if (Array.isArray(response.data)) {
         // Ensure the response data is an array
@@ -43,7 +44,7 @@ const Book: React.FC = () => {
   const deleteBooking = async () => {
     if (itemToDelete) {
       try {
-        await axios.delete(`http://localhost:3000/api/bookdelete/${itemToDelete.id}`);
+        await axios.delete(`${BE_URL}/bookdelete/${itemToDelete.id}`);
         setBookings((prevBookings) => prevBookings.filter((booking) => booking.id !== itemToDelete.id));
         setShowConfirmDelete(false);
         setItemToDelete(null);

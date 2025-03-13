@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import '../styles/Users.css'
+import { BE_URL } from "../utils/Constant";
 
 // User interface
 interface User {
@@ -17,7 +18,7 @@ const Users: React.FC = () => {
   useEffect(() => {
     // Fetch users when component mounts
     axios
-      .get("http://localhost:3000/api/user")
+      .get(`${BE_URL}/user`)
       
       .then((response) => {
         console.log(response.data)
@@ -34,7 +35,7 @@ const Users: React.FC = () => {
   const confirmDelete = () => {
     if (userIdToDelete !== null) {
       axios
-        .delete(`http://localhost:3000/api/get/${userIdToDelete}`)
+        .delete(`${BE_URL}/get/${userIdToDelete}`)
         .then(() => {
           setUsers((prevUsers) => prevUsers.filter(user => user.id !== userIdToDelete));
           setShowModal(false);
