@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/Event.css";  
-import { BE_URL } from "../utils/Constant";
+import { BE_URL } from "../utils/Constants";
 
 interface Booking {
   id: number;

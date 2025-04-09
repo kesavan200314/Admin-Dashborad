@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import '../styles/Users.css'
-import { BE_URL } from "../utils/Constant";
+import { BE_URL } from "../utils/Constants";
 
 // User interface
 interface User {
